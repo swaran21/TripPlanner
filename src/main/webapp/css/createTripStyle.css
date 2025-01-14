@@ -1,0 +1,88 @@
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #74ebd5, #9face6);
+    margin: 0;
+    padding: 0;
+}
+
+/* Center the content */
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    padding-top: 30px;
+}
+
+/* Form styling */
+form {
+    margin: 50px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;  /* Fixed width */
+}
+
+/* Fieldset and legend styling */
+fieldset {
+    border: 2px solid #4CAF50;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Legend styling */
+legend {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Label styling */
+label {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Input and textarea fields */
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Focus effect on input fields */
+input:focus, textarea:focus {
+    border: 1px solid #4CAF50;
+    outline: none;
+}
+
+/* Submit button styling */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect on button */
+button:hover {
+    background-color: #45a049;
+}
+
+/* Extra margin for bottom of form */
+form {
+    margin-bottom: 50px;
+}
