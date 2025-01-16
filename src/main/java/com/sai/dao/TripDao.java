@@ -10,7 +10,7 @@ import com.sai.classes.Trip;
 
 public class TripDao {
 	
-	private static final String url = "jdbc:mysql://localhost:3306/login_register_project";
+	private static final String url = "jdbc:mysql://localhost:3306/tripplannerdb";
 	private static final String username = "root";
 	private static final String password = "avengers";
 	
@@ -32,8 +32,8 @@ public class TripDao {
 			
             return st.executeUpdate() > 0;
 		}
-		catch (SQLException e) {
-	        // Log exception details
+		catch (SQLException e)
+		{
 	        e.printStackTrace();
 	        return false;
 		}
@@ -52,7 +52,8 @@ public class TripDao {
 			st.setInt(1, userId);
 			
 			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
+			while(rs.next()) 
+			{
 				Trip trip = new Trip();
 				trip.setId(rs.getInt("trip_id"));
 				trip.setTripName(rs.getString("trip_name"));
@@ -65,7 +66,8 @@ public class TripDao {
                 trips.add(trip);
 			}
 		}
-		catch (SQLException e) {
+		catch (SQLException e)
+		{
 	        e.printStackTrace();
 		}
 		
@@ -80,7 +82,8 @@ public class TripDao {
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setInt(1,trip_id);
 			ResultSet rs = st.executeQuery();
-			if(rs.next()) {
+			if(rs.next())
+			{
 				return new EditTrip(
 						rs.getInt("trip_id"),
 	                    rs.getString("trip_name"),
@@ -92,7 +95,8 @@ public class TripDao {
 				);
 			}
 		}
-		catch(SQLException e) {
+		catch(SQLException e)
+		{
 			e.printStackTrace();
 		}
 		return null;
@@ -113,10 +117,32 @@ public class TripDao {
             st.setInt(7, trip.getId());
             return st.executeUpdate() > 0;
 		}
-		catch(SQLException e) {
+		catch(SQLException e) 
+		{
 			e.printStackTrace();
 		}
 		return false;
 	}
+	
+	public boolean deleteTrip(int tripId) throws ClassNotFoundException {
+	    String sql = "DELETE FROM trips WHERE trip_id = ?";
+	    
+	    try {
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+	        Connection con = DriverManager.getConnection(url, username, password);
+	        PreparedStatement st = con.prepareStatement(sql);
+	        
+	        st.setInt(1, tripId);
+	        
+	        int rowsAffected = st.executeUpdate();
+	        return rowsAffected > 0; // Return true if the trip was deleted
+	    } 
+	    catch (SQLException e){
+	        e.printStackTrace();
+	    }
+	    
+	    return false;
+	}
+
 	
 }

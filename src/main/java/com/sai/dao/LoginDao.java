@@ -4,12 +4,13 @@ import java.sql.*;
 
 public class LoginDao {
     String sql = "SELECT * FROM users WHERE uname = ? AND pass = ?";
-    String url = "jdbc:mysql://localhost:3306/login_register_project";
+    String url = "jdbc:mysql://localhost:3306/tripplannerdb";
     String username = "root";
     String password = "avengers";
 
     public boolean check(String uname, String pass) throws ClassNotFoundException {
-        try {
+        try 
+        {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, username, password);
             PreparedStatement st = con.prepareStatement(sql);
@@ -19,23 +20,28 @@ public class LoginDao {
             if (rs.next()) {
                 return true;
             }
-        } catch (SQLException e) {
+            
+        } 
+        catch (SQLException e){
             e.printStackTrace();
         }
         return false;
     }
     public int getUserId(String uname) throws ClassNotFoundException {
-        try {
+    	
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, username, password);
             String query = "SELECT id FROM users WHERE uname = ?";
             PreparedStatement st = con.prepareStatement(query);
             st.setString(1, uname);
             ResultSet rs = st.executeQuery();
-            if (rs.next()) {
+            if (rs.next())
+            {
                 return rs.getInt("id");
             }
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e){
             e.printStackTrace();
         }
         return -1;

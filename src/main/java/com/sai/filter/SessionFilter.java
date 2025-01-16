@@ -20,18 +20,16 @@ public class SessionFilter implements Filter {
         HttpSession session = request.getSession(false);
         String uri = request.getRequestURI();
 
-        // Allow public pages
         if (uri.endsWith("index.jsp") || uri.endsWith("login.jsp") || uri.endsWith("login") || uri.endsWith("register.jsp") || uri.endsWith("logout")) {
             chain.doFilter(req, res);
             return;
         }
 
-        // Redirect to login if session is invalid
-        if (session == null || session.getAttribute("userId") == null) {
+        if (session == null || session.getAttribute("userId") == null) 
+        {
             response.sendRedirect("login.jsp");
         } else {
             chain.doFilter(req, res);
         }
     }
 }
-

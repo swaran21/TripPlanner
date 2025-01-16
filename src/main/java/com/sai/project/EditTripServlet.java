@@ -20,9 +20,14 @@ public class EditTripServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    	
+    	 res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+         res.setHeader("Pragma", "no-cache");
+         res.setDateHeader("Expires", 0);
+    	
         String idParam = req.getParameter("id");
 
-        if (idParam == null || idParam.isEmpty()) {
+        if (idParam == null || idParam.isEmpty()){
             res.getWriter().println("Invalid Trip ID");
             return;
         }
@@ -31,7 +36,7 @@ public class EditTripServlet extends HttpServlet {
             int tripId = Integer.parseInt(idParam);
             EditTrip trip = tripDao.getTripById(tripId);
 
-            if (trip == null) {
+            if (trip == null){
                 res.getWriter().println("Trip not found for the provided ID.");
                 return;
             }
@@ -40,9 +45,11 @@ public class EditTripServlet extends HttpServlet {
             RequestDispatcher dispatcher = req.getRequestDispatcher("editTrip.jsp");
             dispatcher.forward(req, res);
 
-        } catch (NumberFormatException e) {
+        } 
+        catch (NumberFormatException e){
             res.getWriter().println("Invalid Trip ID format");
-        } catch (ClassNotFoundException e) {
+        } 
+        catch (ClassNotFoundException e){
             e.printStackTrace();
             res.getWriter().println("Database error occurred.");
         }
@@ -52,11 +59,16 @@ public class EditTripServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         int id;
         double budget;
+        
+        res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+        res.setHeader("Pragma", "no-cache");
+        res.setDateHeader("Expires", 0);
 
-        try {
+        try{
             id = Integer.parseInt(req.getParameter("trip_id"));
             budget = Double.parseDouble(req.getParameter("budget"));
-        } catch (NumberFormatException e) {
+        } 
+        catch (NumberFormatException e){
             res.getWriter().println("Invalid data format.");
             return;
         }
@@ -69,14 +81,20 @@ public class EditTripServlet extends HttpServlet {
 
         EditTrip trip = new EditTrip(id, tripName, destination, startDate, endDate, budget, participants);
 
-        try {
+        try
+        {
             boolean isUpdated = tripDao.updateTrip(trip);
-            if (isUpdated) {
+            if (isUpdated) 
+            {
                 res.sendRedirect("viewTrip");
-            } else {
+            } 
+            else 
+            {
                 res.getWriter().println("Error updating trip. Please try again.");
             }
-        } catch (ClassNotFoundException e) {
+        } 
+        catch (ClassNotFoundException e) 
+        {
             e.printStackTrace();
             res.getWriter().println("Database error!");
         }

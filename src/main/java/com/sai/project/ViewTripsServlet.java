@@ -32,7 +32,8 @@ public class ViewTripsServlet extends HttpServlet{
 
 	    private void processRequest(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 	        HttpSession session = req.getSession(false);
-	        if (session == null || session.getAttribute("userId") == null) {
+	        if (session == null || session.getAttribute("userId") == null)
+	        {
 	            res.sendRedirect("login.jsp");
 	            return;
 	        }
@@ -42,11 +43,14 @@ public class ViewTripsServlet extends HttpServlet{
 
 	        TripDao tripDao = new TripDao();
 
-	        try {
+	        try 
+	        {
 	            List<Trip> trips = tripDao.getTripDetails(userId);
-	            System.out.println("Trips retrieved: " + trips.size());
+	            System.out.println("Trips retrieved: " +trips.size());
 	            req.setAttribute("trips", trips);
-	        } catch (ClassNotFoundException e) {
+	        } 
+	        catch (ClassNotFoundException e) 
+	        {
 	            e.printStackTrace();
 	        }
 

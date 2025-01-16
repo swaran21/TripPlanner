@@ -27,7 +27,7 @@ public class CreateTripServlet extends HttpServlet{
 		String participants = req.getParameter("participants");
 		
 		Integer userId = (Integer) req.getSession().getAttribute("userId");
-		if (userId == null) {
+		if (userId == null){
             res.sendRedirect("login.jsp");
             return;
         }
@@ -36,15 +36,16 @@ public class CreateTripServlet extends HttpServlet{
 		try {
 			isSuccess = tripDao.createTrip(userId,tripName,destination,startDate,endDate,budget,participants);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(isSuccess) {
-			res.getWriter().println("Trip Created Successfully");
-		}
-		else {
-			res.getWriter().println("Failed to create trip.");
-		}
+		if (isSuccess){
+            req.setAttribute("message","Trip Created Successfully");
+            req.getRequestDispatcher("createTrip.jsp").forward(req, res);
+        } 
+		else{
+            req.setAttribute("message","Failed to create trip.");
+            req.getRequestDispatcher("createTrip.jsp").forward(req, res);
+        }
 		
 	}
 }

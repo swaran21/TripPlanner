@@ -1,59 +1,107 @@
-/* Resetting basic styles */
+/* Reset styles and basic body settings */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #74ebd5, #9face6);
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #4facfe, #00f2fe);
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
 }
 
 h2 {
-    color: #4CAF50;
+    color: #333;
     text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-form {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    width: 50%;
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.form-group {
+    margin-bottom: 20px;
 }
 
 label {
-    font-size: 16px;
-    color: #333;
-    margin-top: 10px;
     display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 8px;
 }
 
-input[type="text"], input[type="date"], input[type="number"], textarea {
+input[type="text"], 
+input[type="date"], 
+input[type="number"], 
+textarea {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    padding: 12px;
     font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, 
+input[type="date"]:focus, 
+input[type="number"]:focus, 
+textarea:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+textarea {
+    resize: vertical;
+}
+
+.form-actions {
+    text-align: center;
 }
 
 input[type="submit"] {
-    background-color: #4CAF50;
+    background: linear-gradient(90deg, #56ab2f, #a8e063);
     color: white;
-    padding: 12px 20px;
+    padding: 12px 25px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 30px;
     font-size: 16px;
-    margin-top: 20px;
-    transition: background-color 0.3s;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background: linear-gradient(90deg, #a8e063, #56ab2f);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .error-message {
     color: red;
     text-align: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
