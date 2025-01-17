@@ -118,7 +118,6 @@
 </head>
 <body>
     <div class="register-container">
-        <h2>Register</h2>
         <form action="register" method="post" class="register-form">
             <label for="username">Username:</label>
             <input type="text" name="uname" id="username" placeholder="Enter your username" required />
