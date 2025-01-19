@@ -1,0 +1,89 @@
+ /* Reset styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #74ebd5, #9face6);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Form container */
+        form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+        }
+
+        legend {
+            font-size: 24px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            form {
+                width: 90%;
+            }
+
+            legend {
+                font-size: 20px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
