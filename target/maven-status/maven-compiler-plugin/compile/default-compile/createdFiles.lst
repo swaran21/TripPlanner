@@ -9,6 +9,7 @@ com\sai\project\EditTripServlet.class
 com\sai\classes\EditTrip.class
 com\sai\project\CreateTripServlet.class
 com\sai\filter\SessionFilter.class
+com\sai\project\IndexServlet.class
 com\sai\project\ViewTripsServlet.class
 com\sai\dao\LoginDao.class
 com\sai\dao\RegisterDao.class
